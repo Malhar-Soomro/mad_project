@@ -4,6 +4,7 @@ import 'package:fire_app/FireStore/FireStoreAddScreen.dart';
 import 'package:fire_app/Utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 class PostScreenFireStore extends StatefulWidget {
   const PostScreenFireStore({super.key});
 
@@ -64,8 +65,8 @@ class _PostScreenFireStoreState extends State<PostScreenFireStore> {
                     return ListTile(
                       title:
                           Text(snapshot.data!.docs[index]["title"].toString()),
-                      subtitle:
-                          Text(snapshot.data!.docs[index]["id"].toString()),
+                      // subtitle:
+                      //     Text(snapshot.data!.docs[index]["id"].toString()),
                       trailing: PopupMenuButton(
                         icon: const Icon(Icons.more_vert),
                         itemBuilder: (context) {

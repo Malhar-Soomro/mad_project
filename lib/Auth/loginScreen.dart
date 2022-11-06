@@ -1,11 +1,8 @@
-// import 'package:fire_app/Auth/ForgotPassword.dart';
-// import 'package:fire_app/Auth/login_with_phone.dart';
 import 'package:fire_app/FireStore/firestore_posts.dart';
 import 'package:fire_app/Utils/utils.dart';
 import 'package:fire_app/Widgets/roundButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'SignupSreen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -68,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Firebase Posts"),
+        title: const Text("Firebase Login"),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -142,29 +139,6 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(
             height: 30,
           ),
-          // Center(
-          //   child: TextButton(
-          //     onPressed: () {
-          //       Navigator.push(
-          //           context,
-          //           MaterialPageRoute(
-          //               builder: (context) => const LoginWithPhone()));
-          //     },
-          //     child: const Text("Login Via Phone ?"),
-          //   ),
-          // ),
-          // Align(
-          //   alignment: Alignment.bottomRight,
-          //   child: TextButton(
-          //       onPressed: () {
-          //         Navigator.push(
-          //             context,
-          //             MaterialPageRoute(
-          //                 builder: (context) => const ForgotPasswordScreen()));
-          //       },
-          //       child: const Text("Forgot Password"),
-          //     ),
-          // ),
         ],
       ),
     );
