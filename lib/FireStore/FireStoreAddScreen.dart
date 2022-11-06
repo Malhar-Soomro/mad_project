@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fire_app/Utils/utils.dart';
 import 'package:fire_app/Widgets/roundButton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AddPostFireStore extends StatefulWidget {
@@ -52,11 +53,13 @@ class _AddPostFireStoreState extends State<AddPostFireStore> {
                   loading = true;
                 });
 
+                final currentUserId = FirebaseAuth.instance.currentUser?.uid;
                 // Inserting data into the doc with ID
                 firestore.doc(id).set({
                   // Same Map Form main data ayega yahan bhi
                   "title": postController.text.toString(),
-                  "id": id
+                  "id": id,
+                  "uId": currentUserId.toString(),
                 }).then((value) {
                   setState(() {
                     loading = false;

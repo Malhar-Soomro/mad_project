@@ -4,7 +4,6 @@ import 'package:fire_app/FireStore/FireStoreAddScreen.dart';
 import 'package:fire_app/Utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 class PostScreenFireStore extends StatefulWidget {
   const PostScreenFireStore({super.key});
 
@@ -75,6 +74,12 @@ class _PostScreenFireStoreState extends State<PostScreenFireStore> {
                               value: 1,
                               child: ListTile(
                                 onTap: () {
+                                  if (snapshot.data!.docs[index]["uId"] !=
+                                      FirebaseAuth.instance.currentUser?.uid) {
+                                    Utils.toastsMessage(
+                                        'Can not edit the post item');
+                                    return;
+                                  }
                                   Navigator.pop(context);
                                   showDialogBoxForUpdation(
                                       snapshot.data!.docs[index]["title"]
@@ -90,6 +95,12 @@ class _PostScreenFireStoreState extends State<PostScreenFireStore> {
                               value: 2,
                               child: ListTile(
                                 onTap: () {
+                                  if (snapshot.data!.docs[index]["uId"] !=
+                                      FirebaseAuth.instance.currentUser?.uid) {
+                                    Utils.toastsMessage(
+                                        'Can not delete the post item');
+                                    return;
+                                  }
                                   Navigator.pop(context);
                                   refs
                                       .doc(snapshot.data!.docs[index]["id"])
