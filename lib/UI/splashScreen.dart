@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
         const Center(
           child: Text(
-            "Let us Fire the App",
+            "MAD Project",
             style: TextStyle(fontSize: 25),
           ),
         ),

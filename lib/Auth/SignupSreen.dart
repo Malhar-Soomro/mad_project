@@ -17,7 +17,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final passwordController = TextEditingController();
   bool loading = false;
 
-  
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
@@ -30,9 +29,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     passwordController.dispose();
   }
 
-
-void signup() {
-if (_formKey.currentState!.validate()) {
+  void signup() {
+    if (_formKey.currentState!.validate()) {
       setState(() {
         loading = true;
       });
@@ -41,6 +39,7 @@ if (_formKey.currentState!.validate()) {
               email: emailController.text.toString(),
               password: passwordController.text.toString())
           .then((value) {
+        Utils.toastsMessage("Successfully Registered");
         setState(() {
           loading = false;
         });
@@ -53,13 +52,13 @@ if (_formKey.currentState!.validate()) {
         Utils.toastsMessage(error.toString());
       });
     }
-}
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("FireApp Signup"),
+        title: const Text("Firebase Signup"),
         centerTitle: true,
       ),
       body: Column(
@@ -106,10 +105,7 @@ if (_formKey.currentState!.validate()) {
                     height: 30,
                   ),
                   RoundButton(
-                    isLoading: loading,
-                    title: "Sign Up",
-                    onPress: signup
-                  )
+                      isLoading: loading, title: "Sign Up", onPress: signup)
                 ],
               ),
             ),
