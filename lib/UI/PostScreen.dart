@@ -177,36 +177,3 @@ class _PostScreenState extends State<PostScreen> {
         }));
   }
 }
-
-//! Second way for listing the contents from the Firebase DB is using the Stream Builder
-
-// Expanded(
-//             child: StreamBuilder(
-//               stream: refs.onValue, // firebase DB ka ref
-//               builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
-//                 if (!snapshot.hasData) {
-//                   return const CircularProgressIndicator(
-//                     color: Colors.pink,
-//                   );
-//                 } else {
-//                 // converting the data into a list from firebase DB
-
-//                   Map<dynamic, dynamic> map =
-//                       snapshot.data!.snapshot.value as dynamic;
-//                   List<dynamic> list = [];
-//                   list.clear();
-//                   list = map.values.toList();
-
-//                   return ListView.builder(
-//                     itemCount: snapshot.data!.snapshot.children.length,
-//                     itemBuilder: (context, index) {
-//                       return ListTile(
-//                         title: Text(list[index]["title"].toString()),
-//                         subtitle: Text(list[index]["id"].toString()),
-//                       );
-//                     },
-//                   );
-//                 }
-//               },
-//             ),
-//           ),

@@ -1,5 +1,6 @@
 import 'package:fire_app/FireStore/firestore_posts.dart';
 import 'package:fire_app/Utils/utils.dart';
+import 'package:fire_app/Auth/ForgotPassword.dart';
 import 'package:fire_app/Widgets/roundButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -138,6 +139,18 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           const SizedBox(
             height: 30,
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ForgotPasswordScreen()));
+              },
+              child: const Text("Forgot Password"),
+            ),
           ),
         ],
       ),

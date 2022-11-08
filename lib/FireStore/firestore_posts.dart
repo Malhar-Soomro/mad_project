@@ -15,10 +15,10 @@ class PostScreenFireStore extends StatefulWidget {
 class _PostScreenFireStoreState extends State<PostScreenFireStore> {
   final auth = FirebaseAuth.instance;
   final updateController = TextEditingController();
-  final firestore = FirebaseFirestore.instance.collection("Users").snapshots();
+  final firestore = FirebaseFirestore.instance.collection("Posts").snapshots();
   //
   final CollectionReference refs =
-      FirebaseFirestore.instance.collection("Users");
+      FirebaseFirestore.instance.collection("Posts");
 
   @override
   Widget build(BuildContext context) {

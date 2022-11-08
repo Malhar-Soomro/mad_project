@@ -15,7 +15,7 @@ class _AddPostFireStoreState extends State<AddPostFireStore> {
   bool loading = false;
   final postController = TextEditingController();
   // Reference to the collection Users
-  final firestore = FirebaseFirestore.instance.collection("Users");
+  final firestore = FirebaseFirestore.instance.collection("Posts");
 
   @override
   Widget build(BuildContext context) {
