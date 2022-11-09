@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fire_app/Utils/utils.dart';
 import 'package:fire_app/Widgets/roundButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,6 +17,7 @@ class _AddPostFireStoreState extends State<AddPostFireStore> {
   final postController = TextEditingController();
   // Reference to the collection Users
   final firestore = FirebaseFirestore.instance.collection("Posts");
+  final auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,7 @@ class _AddPostFireStoreState extends State<AddPostFireStore> {
                   "title": postController.text.toString(),
                   "id": id,
                   "uId": currentUserId.toString(),
+                  "user": auth.currentUser?.displayName,
                 }).then((value) {
                   setState(() {
                     loading = false;

@@ -65,8 +65,8 @@ class _PostScreenFireStoreState extends State<PostScreenFireStore> {
                     return ListTile(
                       title:
                           Text(snapshot.data!.docs[index]["title"].toString()),
-                      // subtitle:
-                      //     Text(snapshot.data!.docs[index]["id"].toString()),
+                      subtitle:
+                          Text(snapshot.data!.docs[index]["user"].toString()),
                       trailing: PopupMenuButton(
                         icon: const Icon(Icons.more_vert),
                         itemBuilder: (context) {

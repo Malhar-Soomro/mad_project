@@ -53,7 +53,9 @@ class _VerifyCodeState extends State<VerifyCode> {
                 );
 
                 try {
-                  await _auth.signInWithCredential(credential);
+                  await _auth
+                      .signInWithCredential(credential)
+                      .then((value) => debugPrint(value.user?.displayName));
                   setState(() {
                     loading = false;
                   });

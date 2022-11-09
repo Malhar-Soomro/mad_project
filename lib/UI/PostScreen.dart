@@ -81,7 +81,7 @@ class _PostScreenState extends State<PostScreen> {
                     .contains(SearchFilterController.text.toLowerCase())) {
                   return ListTile(
                     title: Text(snapshot.child("title").value.toString()),
-                    subtitle: Text(snapshot.child("id").value.toString()),
+                    subtitle: Text(snapshot.child("user").value.toString()),
                     trailing:
                         PopUpMenu(title, snapshot.child("id").value.toString()),
                   );

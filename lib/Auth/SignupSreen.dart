@@ -15,6 +15,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final nameController = TextEditingController();
   bool loading = false;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -24,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
 
     // Jb memory men inki zarurat na rahe tou inko remove krdo
-
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
   }
@@ -34,23 +35,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
       setState(() {
         loading = true;
       });
-      _auth
-          .createUserWithEmailAndPassword(
-              email: emailController.text.toString(),
-              password: passwordController.text.toString())
-          .then((value) {
-        Utils.toastsMessage("Successfully Registered");
-        setState(() {
-          loading = false;
+      _auth.createUserWithEmailAndPassword(
+          email: emailController.text.toString(),
+          password: passwordController.text.toString())
+        ..then((val) {
+          val.user?.updateDisplayName(nameController.text).then((value) {
+            Utils.toastsMessage("Successfully Registered");
+            setState(() {
+              loading = false;
+            });
+            // kaam hojaanay k baad yeh krna
+          });
+        }).onError((error, stackTrace) {
+          setState(() {
+            loading = false;
+          });
+          // kaam na ho aur error aajayen tou yeh krna
+          Utils.toastsMessage(error.toString());
         });
-        // kaam hojaanay k baad yeh krna
-      }).onError((error, stackTrace) {
-        setState(() {
-          loading = false;
-        });
-        // kaam na ho aur error aajayen tou yeh krna
-        Utils.toastsMessage(error.toString());
-      });
     }
   }
 
@@ -70,6 +72,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
                 children: [
+                  TextFormField(
+                    controller: nameController,
+                    validator: ((value) {
+                      if (value!.isEmpty) {
+                        return "Name cannot be empty!";
+                      } else {
+                        return null;
+                      }
+                    }),
+                    decoration: const InputDecoration(
+                        hintText: "  Enter Name",
+                        prefixIcon: Icon(Icons.person)),
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
                   TextFormField(
                     controller: emailController,
                     validator: ((value) {
