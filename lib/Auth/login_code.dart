@@ -1,5 +1,5 @@
 import 'package:fire_app/FireStore/firestore_posts.dart';
-import 'package:fire_app/UI/PostScreen.dart';
+// import 'package:fire_app/UI/PostScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

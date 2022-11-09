@@ -68,7 +68,7 @@ class _AddPostFireStoreState extends State<AddPostFireStore> {
                     loading = false;
                   });
                   postController.clear();
-                  Utils.toastsMessage("Post Added to the firestore! ");
+                  Utils.toastsMessage("Post Added");
                 }).onError((error, stackTrace) {
                   setState(() {
                     loading = false;
