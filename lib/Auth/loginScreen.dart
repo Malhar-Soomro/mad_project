@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
               email: emailController.text.toString(),
               password: passwordController.text.toString())
           .then((value) {
-        debugPrint(value.user?.displayName ?? 'No display nae');
+        debugPrint(value.user?.displayName ?? 'No display name');
         setState(() {
           loading = false;
         });

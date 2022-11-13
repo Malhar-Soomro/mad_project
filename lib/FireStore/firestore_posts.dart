@@ -58,6 +58,8 @@ class _PostScreenFireStoreState extends State<PostScreenFireStore> {
                 return const Text("Some Error has Occured");
               }
 
+              print(snapshot.data!.docs.map((e) => e.data().toString()));
+
               return Expanded(
                 child: ListView.builder(
                   itemCount: snapshot.data?.docs.length,
